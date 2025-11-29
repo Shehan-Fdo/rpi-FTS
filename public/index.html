@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pi Share</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <h1>Pi Share</h1>
+            <button id="qr-btn" class="icon-btn" aria-label="Show QR Code">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="3" y="3" width="7" height="7"></rect>
+                    <rect x="14" y="3" width="7" height="7"></rect>
+                    <rect x="14" y="14" width="7" height="7"></rect>
+                    <path d="M3 14h7v7H3z"></path>
+                </svg>
+            </button>
+        </header>
+
+        <div id="upload-area" class="upload-area">
+            <div class="upload-content">
+                <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                    class="upload-icon">
+                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                    <polyline points="17 8 12 3 7 8"></polyline>
+                    <line x1="12" y1="3" x2="12" y2="15"></line>
+                </svg>
+                <p>Drag & Drop files here</p>
+                <p class="sub-text">or click to browse</p>
+            </div>
+            <input type="file" id="file-input" multiple hidden>
+            <div id="upload-progress" class="progress-bar hidden">
+                <div class="progress-fill"></div>
+                <div class="progress-text">
+                    <span id="progress-percent">0%</span>
+                    <span id="progress-details"></span>
+                </div>
+            </div>
+        </div>
+
+        <div class="file-list-container">
+            <h2>Files</h2>
+            <ul id="file-list" class="file-list">
+                <!-- Files will be populated here -->
+            </ul>
+        </div>
+    </div>
+
+    <div id="qr-modal" class="modal hidden">
+        <div class="modal-content">
+            <span id="close-modal" class="close">&times;</span>
+            <h3>Connect Device</h3>
+            <p>Scan this QR code to connect:</p>
+            <div id="qr-code-container"></div>
+            <p id="server-url" class="url-text"></p>
+        </div>
+    </div>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>
